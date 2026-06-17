@@ -2,8 +2,7 @@
 
 ![cc-factory banner](docs/assets/readme-banner.webp)
 
-[![CI](https://img.shields.io/github/actions/workflow/status/yasyf/cc-factory/ci.yml?branch=main&label=CI)](https://github.com/yasyf/cc-factory/actions/workflows/ci.yml)
-[![License: PolyForm-Noncommercial-1.0.0](https://img.shields.io/badge/License-PolyForm-Noncommercial-1.0.0-blue.svg)](https://github.com/yasyf/cc-factory/blob/main/LICENSE)
+[![License: PolyForm-Noncommercial-1.0.0](https://img.shields.io/badge/License-PolyForm--Noncommercial--1.0.0-blue.svg)](https://github.com/yasyf/cc-factory/blob/main/LICENSE)
 
 A software factory for Claude Code: orchestrated agents that plan, build, review, and ship software.
 
