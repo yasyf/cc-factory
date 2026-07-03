@@ -1,53 +1,35 @@
-# cc-factory
+# ![cc-factory](docs/assets/readme-banner.webp)
 
-![cc-factory banner](docs/assets/readme-banner.webp)
+**Your spec clocks in. A reviewed diff clocks out.** cc-factory is an assembly line of agents: your spec gets designed, planned, built in parallel, reviewed, and argued against before it leaves the floor.
 
-[![License: PolyForm-Noncommercial-1.0.0](https://img.shields.io/badge/License-PolyForm--Noncommercial--1.0.0-blue.svg)](https://github.com/yasyf/cc-factory/blob/main/LICENSE)
+[![License: PolyForm Noncommercial](https://img.shields.io/badge/license-PolyForm--Noncommercial--1.0.0-blue)](LICENSE)
 
-A software factory for Claude Code: orchestrated agents that plan, build, review, and ship software.
+Status: design stage — the pipeline described below is the design; nothing here installs or runs yet.
 
-cc-factory runs a spec down an assembly line of Claude Code agents: one plans the
-work, a pool of workers builds it in parallel, and separate agents review the diff
-and push back before anything ships. The payoff is the hand-offs — plan, build,
-critique, and ship move on their own, so you describe what you want instead of
-steering one session through every step.
+---
 
-## Install
+## Use cases
 
-cc-factory is a Claude Code plugin. Add the marketplace, then install it:
+### Ship a feature from a one-line spec
 
-```
-/plugin marketplace add yasyf/cc-factory
-/plugin install cc-factory@cc-factory
-```
+Driving one Claude session through a feature means steering every step yourself: prompt the plan, watch the edits, kick off the review, nudge it along. The factory takes the spec and runs the whole line:
 
-## Quickstart
-
-Hand the factory a one-line spec and let the pipeline run:
-
-```
+```text
 /cc-factory:build "Add per-key rate limiting to the public API, 100 req/min"
 ```
 
-The factory plans the change, dispatches a pool of `claude-pool` workers to
-implement it, opens a `cc-review` on the resulting diff, and surfaces any
-`cc-pushback` objections for you to resolve before it merges.
+The factory plans the change, dispatches a pool of workers to implement it, opens a review on the resulting diff, and surfaces objections for you to resolve before it merges. Your first touch is the finished diff.
 
-## What problems does this solve?
+### Build in parallel without steering every session
 
-- **One session, one thread of attention.** A single Claude session does one thing
-  at a time and loses context across compactions. cc-factory fans the build across
-  `claude-pool` workers and keeps decisions in `cc-notes`, so parallel work and long
-  memory stop being your job.
-- **Nobody checks the work.** Code an agent writes ships as fast as it's written,
-  bugs and all. cc-factory routes every diff through `cc-review` and an adversarial
-  `cc-pushback` pass before it lands.
-- **Orchestration gets hand-rolled every time.** Stitching plan, build, review, and
-  ship into one pipeline means wiring prompts and shell by hand for each project.
-  `cc-orchestrate` holds the pipeline; cc-factory ships the wiring.
-- **Guardrails are an afterthought.** Agents touch files they shouldn't and skip the
-  lint. `captain-hook` enforces the guards declaratively, on every step.
+A single session has one thread of attention. It does one thing at a time and loses context across compactions. The factory fans the build across a worker pool and parks decisions in durable notes, so parallel work and long memory stop being your job.
 
-## License
+### Catch agent-written bugs before they merge
 
-PolyForm-Noncommercial-1.0.0. See [LICENSE](https://github.com/yasyf/cc-factory/blob/main/LICENSE).
+Code an agent writes ships as fast as it's written, bugs and all. The line ends in two gates: a human review behind your Submit button, then an adversarial pushback pass that argues against the diff before it lands.
+
+## How the line is wired
+
+cc-factory ships no engine of its own — it's composed from Claude Code plugin artifacts (skills, agents, commands, and hooks) that wire together [cc-orchestrate](https://github.com/yasyf/cc-orchestrate) for the pipeline, [claude-pool](https://github.com/yasyf/cc-pool) for the parallel workers, [cc-review](https://github.com/yasyf/cc-review) and [cc-pushback](https://github.com/yasyf/cc-pushback) for the gates, [cc-notes](https://github.com/yasyf/cc-notes) for durable decisions, and [captain-hook](https://github.com/yasyf/captain-hook) for guardrails on every step. Those directories land here as the pipeline gets built; [AGENTS.md](AGENTS.md) carries the conventions they follow.
+
+Licensed under [PolyForm Noncommercial 1.0.0](LICENSE).
