@@ -30,6 +30,6 @@ Code an agent writes ships as fast as it's written, bugs and all. The line ends 
 
 ## How the line is wired
 
-cc-factory ships no engine of its own. Every stage is a tool that earns its keep standalone, and the factory is Claude Code plugin wiring. Skills, agents, commands, and hooks connect [cc-orchestrate](https://github.com/yasyf/cc-orchestrate) for the pipeline, [claude-pool](https://github.com/yasyf/cc-pool) for the parallel workers, [cc-review](https://github.com/yasyf/cc-review) for the human gate, [cc-notes](https://github.com/yasyf/cc-notes) for durable decisions, and [captain-hook](https://github.com/yasyf/captain-hook) for guardrails on every step. The adversarial pushback gate is the one stage without a standalone tool yet. [AGENTS.md](AGENTS.md) carries the conventions the line follows.
+cc-factory ships no engine of its own. Every stage is a tool that earns its keep standalone, and the factory is Claude Code plugin wiring. Skills, agents, commands, and hooks connect [cc-orchestrate](https://github.com/yasyf/cc-orchestrate) for the pipeline, [cc-pool](https://github.com/yasyf/cc-pool) for the parallel workers, [cc-review](https://github.com/yasyf/cc-review) for the human gate, [cc-notes](https://github.com/yasyf/cc-notes) for durable decisions, and [captain-hook](https://github.com/yasyf/captain-hook) for guardrails on every step. The adversarial pushback gate is the one stage without a standalone tool yet. [AGENTS.md](AGENTS.md) carries the conventions the line follows.
 
 Licensed under [PolyForm Noncommercial 1.0.0](LICENSE).
