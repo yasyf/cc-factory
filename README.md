@@ -1,10 +1,10 @@
 # ![cc-factory](docs/assets/readme-banner.webp)
 
-**Your spec clocks in. A reviewed diff clocks out.** cc-factory is an assembly line of agents: your spec gets designed, planned, built in parallel, reviewed, and argued against before it leaves the floor.
+**Your spec clocks in. A reviewed diff clocks out.** cc-factory is an assembly line of agents that designs, plans, builds in parallel, reviews, and argues against your change before it leaves the floor.
 
-[![License: PolyForm Noncommercial](https://img.shields.io/badge/license-PolyForm--Noncommercial--1.0.0-blue)](LICENSE)
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-PolyForm--Noncommercial--1.0.0-blue" alt="PolyForm Noncommercial license"></a>
 
-Status: design stage — the pipeline described below is the design; nothing here installs or runs yet.
+cc-factory is at the design stage. The pipeline described below is the design; nothing here installs or runs yet.
 
 ---
 
@@ -12,7 +12,7 @@ Status: design stage — the pipeline described below is the design; nothing her
 
 ### Ship a feature from a one-line spec
 
-Driving one Claude session through a feature means steering every step yourself: prompt the plan, watch the edits, kick off the review, nudge it along. The factory takes the spec and runs the whole line:
+Driving one Claude session through a feature means steering every step yourself. You prompt the plan, watch the edits, kick off the review, and nudge it along. The factory takes the spec and runs the whole line:
 
 ```text
 /cc-factory:build "Add per-key rate limiting to the public API, 100 req/min"
@@ -26,10 +26,10 @@ A single session has one thread of attention. It does one thing at a time and lo
 
 ### Catch agent-written bugs before they merge
 
-Code an agent writes ships as fast as it's written, bugs and all. The line ends in two gates: a human review behind your Submit button, then an adversarial pushback pass that argues against the diff before it lands.
+Code an agent writes ships as fast as it's written, bugs and all. The line ends in two gates. A human review sits behind your Submit button, and an adversarial pushback pass argues against the diff before it lands.
 
 ## How the line is wired
 
-cc-factory ships no engine of its own — it's composed from Claude Code plugin artifacts (skills, agents, commands, and hooks) that wire together [cc-orchestrate](https://github.com/yasyf/cc-orchestrate) for the pipeline, [claude-pool](https://github.com/yasyf/cc-pool) for the parallel workers, [cc-review](https://github.com/yasyf/cc-review) and [cc-pushback](https://github.com/yasyf/cc-pushback) for the gates, [cc-notes](https://github.com/yasyf/cc-notes) for durable decisions, and [captain-hook](https://github.com/yasyf/captain-hook) for guardrails on every step. Those directories land here as the pipeline gets built; [AGENTS.md](AGENTS.md) carries the conventions they follow.
+cc-factory ships no engine of its own. Every stage is a tool that earns its keep standalone, and the factory is Claude Code plugin wiring. Skills, agents, commands, and hooks connect [cc-orchestrate](https://github.com/yasyf/cc-orchestrate) for the pipeline, [claude-pool](https://github.com/yasyf/cc-pool) for the parallel workers, [cc-review](https://github.com/yasyf/cc-review) for the human gate, [cc-notes](https://github.com/yasyf/cc-notes) for durable decisions, and [captain-hook](https://github.com/yasyf/captain-hook) for guardrails on every step. The adversarial pushback gate is the one stage without a standalone tool yet. [AGENTS.md](AGENTS.md) carries the conventions the line follows.
 
 Licensed under [PolyForm Noncommercial 1.0.0](LICENSE).
