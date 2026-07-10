@@ -1,4 +1,4 @@
-<!-- cc-guides 0.1.8 src=AGENTS.src.md | GENERATED — do not edit: change AGENTS.src.md and run 'cc-guides render'. Everything below is in force. -->
+<!-- cc-guides 0.1.10 src=.claude/fragments/AGENTS.md fragments=cc-skills@a91b043bdbd2 | GENERATED — do not edit: edit .claude/fragments/AGENTS.md/ and run 'cc-guides render'. Everything below is in force. -->
 # cc-factory Development Guide
 
 A software factory for Claude Code: orchestrated agents that plan, build, review, and ship software.

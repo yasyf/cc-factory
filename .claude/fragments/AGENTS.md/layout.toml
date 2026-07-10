@@ -1,0 +1,5 @@
+fragments = [
+  "cc-factory-development-guide",
+  "cc-skills:ccx",
+  "style",
+]
