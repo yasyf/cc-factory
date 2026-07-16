@@ -33,5 +33,3 @@
 **Testing.** No language test suite yet — cc-factory is wired from Claude Code skills, agents, and hooks. Validate guard hooks with `uvx capt-hook test`, and exercise the pipeline end to end by running the factory against a throwaway spec in a scratch repo.
 
 **Writing docs.** When writing or revising docs, a README, a tutorial, a how-to, or reference, use the `writing-docs` skill (Diataxis modes, voice rules, and runnable code-sample rules) and run `slop-cop check <file> --lang=markdown` before you finish.
-
-**Git.** Commits should be atomic and scoped. One logical change per commit.
